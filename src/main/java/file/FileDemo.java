@@ -18,10 +18,10 @@ public class FileDemo {
         //相对路径中的"./"表达当前目录
         //相对于IDEA中执行程序时,"./"表达的就是当前项目目录
         File file = new File("./demo.txt");
-        String name = file.getName();
+        String name = file.getName();//获取文件名
         System.out.println("名字:"+name);
 
-        long length = file.length();//文件的字节数
+        long length = file.length();//文件的字节数(单位是字节)
         System.out.println("长度:"+length+"字节");
 
     }
