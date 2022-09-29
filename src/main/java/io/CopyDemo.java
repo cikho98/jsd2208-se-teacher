@@ -39,10 +39,14 @@ public class CopyDemo {
 
          */
         int d;
+
+        long start = System.currentTimeMillis();
         while( (d = fis.read()) != -1 ) {
             fos.write(d);
         }
-        System.out.println("复制完毕!");
+        long end = System.currentTimeMillis();
+
+        System.out.println("复制完毕!耗时:"+(end-start)+"ms");
         fis.close();
         fos.close();
     }
