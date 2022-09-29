@@ -23,6 +23,14 @@ public class FileDemo {
 
         long length = file.length();//文件的字节数(单位是字节)
         System.out.println("长度:"+length+"字节");
+        //判断file表示的文件或目录是否可读或可写
+        boolean cr = file.canRead();
+        System.out.println("可读:"+cr);
+        boolean cw = file.canWrite();
+        System.out.println("可写:"+cw);
+        //是否被隐藏
+        boolean ih = file.isHidden();
+        System.out.println("是否隐藏:"+ih);
 
     }
 }
