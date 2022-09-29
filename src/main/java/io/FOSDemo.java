@@ -9,9 +9,16 @@ import java.io.IOException;
  * JAVA IO
  * IO:Input和Output 即:输入与输出
  *
+ * InputStream和OutputStream类
+ * 他们是所有字节输入和输出流的超类，并且他们本身是抽象类。
+ * java.io.InputStream上定义了读取字节的相关方法，所有子类都需要实现。
+ * java.io.OutputStream上定义了写出字节的相关方法，所有子类都需要实现。
+ *
+ *
  * 文件流
  * java.io.FileInputStream 文件输入流  链接程序与文件的管道，负责读取数据(读文件)
  * java.io.FileOutputStream 文件输出流 链接程序与文件的管道，负责写出数据(写文件)
+ * 文件流继承自InputStream和OutputStream
  */
 public class FOSDemo {
     public static void main(String[] args) throws IOException {
