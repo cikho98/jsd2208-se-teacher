@@ -12,8 +12,8 @@ import java.io.IOException;
  */
 public class CopyDemo {
     public static void main(String[] args) throws IOException {
-        FileInputStream fis = new FileInputStream("image.png");
-        FileOutputStream fos = new FileOutputStream("image_cp.png");
+        FileInputStream fis = new FileInputStream("openjdk.zip");
+        FileOutputStream fos = new FileOutputStream("openjdk_cp.zip");
         /*
             image.png文件内容
             11110000 00001111 10101010 01010101 11001100 00110011...
