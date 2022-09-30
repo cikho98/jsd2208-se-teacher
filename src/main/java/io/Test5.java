@@ -1,5 +1,11 @@
 package io;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.Scanner;
+
 /**
  * 设计一个User类，表示用户信息
  * 有4个属性:username,password,nickname,age
@@ -16,7 +22,24 @@ package io;
  *
  */
 public class Test5 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("欢迎注册");
+        System.out.println("请输入用户名:");
+        String username = scanner.nextLine();
+        System.out.println("请输入密码:");
+        String password = scanner.nextLine();
+        System.out.println("请输入昵称:");
+        String nickname = scanner.nextLine();
+        System.out.println("请输入年龄:");
+        int age = scanner.nextInt();
 
+        User user = new User(username,password,nickname,age);
+
+        FileOutputStream fos = new FileOutputStream(username+".obj");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(user);
+        System.out.println("注册完毕!");
+        oos.close();
     }
 }
