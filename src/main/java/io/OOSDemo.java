@@ -21,6 +21,15 @@ public class OOSDemo {
 
         FileOutputStream fos = new FileOutputStream("person.obj");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
+        /*
+            ObjectOutputStream上提供了序列化对象的方法:
+            void writeObject(Object o)
+            该方法的作用是将给定的对象按照其结构转换为一组字节并通过其
+            链接的流写出。
+            该方法可能抛出下面异常
+            java.io.NotSerializableException
+            原因是写出的对象没有实现接口:java.io.Serializable
+         */
         oos.writeObject(p);
         System.out.println("对象写出完毕!");
         oos.close();

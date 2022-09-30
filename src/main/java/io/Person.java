@@ -1,11 +1,12 @@
 package io;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 /**
  * 使用当前类测试对象流的对象序列化与反序列化操作
  */
-public class Person {
+public class Person implements Serializable {
     private String name;
     private int age;
     private String gender;
