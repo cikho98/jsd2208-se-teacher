@@ -11,7 +11,23 @@ import java.nio.charset.StandardCharsets;
 public class WriteStringDemo {
     public static void main(String[] args) throws IOException {
         //向文件fos.txt中写入文本数据
-        FileOutputStream fos = new FileOutputStream("fos.txt");
+        /*
+            文件输出流的构造器:
+            FileOutputStream(String path)
+            FileOutputStream(File file)
+            上述两种构造器默认为覆盖模式,即:如果指定的文件已经存在则
+            会先将该文件数据清除为空文件.
+         */
+//        FileOutputStream fos = new FileOutputStream("fos.txt");
+
+        /*
+            FileOutputStream(String path,boolean append)
+            FileOutputStream(File file,boolean append)
+            上述两种构造器可以提供追加模式.如果第二个参数为true则为追加模式
+            追加模式:如果文件存在,则文件内容全部保留,新写入的内容都会陆续的
+            追加到文件末尾.
+         */
+        FileOutputStream fos = new FileOutputStream("fos.txt",true);
         /*
             字符集:
             字符集想象为一个大表格,在上面定义类每个文字对应的2进制的样子.
