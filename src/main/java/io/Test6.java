@@ -13,7 +13,6 @@ public class Test6 {
         File dir = new File(".");
         File[] subs = dir.listFiles(f->f.getName().endsWith(".obj"));
         for(File sub : subs){
-
             FileInputStream fis = new FileInputStream(sub);
             ObjectInputStream ois = new ObjectInputStream(fis);
             Object obj = ois.readObject();//反序列化
@@ -21,6 +20,7 @@ public class Test6 {
                 User user = (User)obj;
                 System.out.println(user);
             }
+            ois.close();
         }
     }
 }
