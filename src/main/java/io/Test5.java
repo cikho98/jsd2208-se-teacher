@@ -36,7 +36,8 @@ public class Test5 {
 
         User user = new User(username,password,nickname,age);
 
-        FileOutputStream fos = new FileOutputStream(username+".obj");
+        FileOutputStream fos
+                = new FileOutputStream(username+".obj");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(user);
         System.out.println("注册完毕!");
