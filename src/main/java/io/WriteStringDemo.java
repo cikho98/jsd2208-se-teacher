@@ -26,6 +26,11 @@ public class WriteStringDemo {
                 中文占3个字节.
          */
         String line = "潇洒不是摆烂,这是我自信的状态.";
+        /*
+            String提供了将字符串转换为一组字节的方法:
+            byte[] getBytes(StandardCharsets.UTF_8)
+            该方法可以将当前字符串按照UTF-8编码将字符串转换为一组字节
+         */
         byte[] data = line.getBytes(StandardCharsets.UTF_8);
         fos.write(data);
 
