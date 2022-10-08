@@ -32,5 +32,7 @@ public class FileDemo {
         boolean ih = file.isHidden();
         System.out.println("是否隐藏:"+ih);
 
+
+
     }
 }
