@@ -20,10 +20,23 @@ public class TryCatchDemo {
     public static void main(String[] args) {
         System.out.println("程序开始了");
         try {
-            String line = null;
+//            String line = null;
+//            String line = "";
+            String line = "abc";
             System.out.println(line.length());
-        }catch(NullPointerException e){
-            System.out.println("出现了空指针并处理了");
+            System.out.println(line.charAt(0));
+            System.out.println(Integer.parseInt(line));
+//        }catch(NullPointerException e){
+//            System.out.println("出现了空指针并处理了");
+//        }catch(StringIndexOutOfBoundsException e){
+//            System.out.println("出现了字符串下标越界,并处理了");
+//        }
+        //当多个异常使用同一种解决办法时,可以合并在一个catch处理.
+        }catch(NullPointerException|StringIndexOutOfBoundsException e){
+            System.out.println("空指针或下标越界的统一处理");
+        //子类异常在上,超类异常在下.
+        }catch(Exception e){
+            System.out.println("反正就是出了个错!");
         }
         System.out.println("程序结束了");
     }
