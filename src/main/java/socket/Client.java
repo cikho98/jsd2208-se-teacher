@@ -3,6 +3,7 @@ package socket;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 /**
  * 聊天室客户端
@@ -44,8 +45,15 @@ public class Client {
             BufferedWriter bw = new BufferedWriter(osw);
             //PrintWriter(高级流),作用:1按行写出字符串  2自动行刷新
             PrintWriter pw = new PrintWriter(bw,true);
-            pw.println("你好服务端!");
 
+            Scanner scanner = new Scanner(System.in);
+            while(true) {
+                String line = scanner.nextLine();
+                if("exit".equals(line)){
+                    break;
+                }
+                pw.println(line);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -56,10 +56,12 @@ public class Server {
             InputStreamReader isr
                     = new InputStreamReader(in, StandardCharsets.UTF_8);
             BufferedReader br = new BufferedReader(isr);
-            //读取一行来自远端计算机发送过来的字符串
-            String message = br.readLine();
-            System.out.println("客户端说:"+message);
 
+            //读取一行来自远端计算机发送过来的字符串
+            String message;
+            while((message = br.readLine())!=null) {
+                System.out.println("客户端说:" + message);
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
