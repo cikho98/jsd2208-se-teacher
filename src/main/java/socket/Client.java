@@ -38,12 +38,12 @@ public class Client {
             //低级流,作用:将写出的字节发送给建立连接的远端计算机
             OutputStream out = socket.getOutputStream();
             //转换流(高级流),作用:1衔接字节与字符流   2将写出的字符转换为字节
-            OutputStreamWriter osw = new OutputStreamWriter(out, StandardCharsets.UTF_8)
+            OutputStreamWriter osw
+                    = new OutputStreamWriter(out, StandardCharsets.UTF_8);
             //缓冲流(高级流),作用:块写文本数据加速
             BufferedWriter bw = new BufferedWriter(osw);
             //PrintWriter(高级流),作用:1按行写出字符串  2自动行刷新
             PrintWriter pw = new PrintWriter(bw,true);
-
             pw.println("你好服务端!");
 
 
