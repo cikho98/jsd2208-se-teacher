@@ -5,6 +5,15 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
+ * windows查看IP地址:
+ * WIN+R后在输入框输入CMD
+ * 弹出的命令行窗口输入:ipconfig查看
+ *
+ * MAC查看IP地址:
+ * 五个手指在触摸板上向中间聚拢,选择"终端"并打开.
+ * 弹出的命令将窗口输入:/sbin/ifconfig查看
+ *
+ *
  * 聊天室服务端
  */
 public class Server {
