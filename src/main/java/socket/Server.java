@@ -1,8 +1,12 @@
 package socket;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 /**
  * windows查看IP地址:
@@ -46,6 +50,17 @@ public class Server {
             System.out.println("等待客户端连接...");
             Socket socket = serverSocket.accept();
             System.out.println("一个客户端连接了!");
+
+            //通过socket获取输入流读取来自远端计算机发送过来的数据
+            InputStream in = socket.getInputStream();
+            InputStreamReader isr
+                    = new InputStreamReader(in, StandardCharsets.UTF_8);
+            BufferedReader br = new BufferedReader(isr);
+            //读取一行来自远端计算机发送过来的字符串
+            String message = br.readLine();
+            System.out.println("客户端说:"+message);
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
