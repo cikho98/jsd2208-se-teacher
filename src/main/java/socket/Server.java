@@ -11,7 +11,7 @@ import java.net.Socket;
  *
  * MAC查看IP地址:
  * 五个手指在触摸板上向中间聚拢,选择"终端"并打开.
- * 弹出的命令将窗口输入:/sbin/ifconfig查看
+ * 弹出的命令行窗口输入:/sbin/ifconfig查看
  *
  *
  * 聊天室服务端
