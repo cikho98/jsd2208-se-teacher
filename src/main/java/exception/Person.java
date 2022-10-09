@@ -12,14 +12,15 @@ public class Person {
         return age;
     }
 
-    public void setAge(int age) throws Exception {
+    public void setAge(int age) throws IllegalAgeException {
         if(age<0||age>100){
 //           throw new RuntimeException("年龄不合法");
             /*
                 除了RuntimeException之外的其它异常如果使用throw
                 抛出则要在当前方法上使用throws声明该异常的抛出
              */
-            throw new Exception("年龄不合法");
+//            throw new Exception("年龄不合法");
+            throw new IllegalAgeException("年龄不合法:"+age);
         }
         this.age = age;
     }
