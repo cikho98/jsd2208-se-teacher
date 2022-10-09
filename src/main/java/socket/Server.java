@@ -12,12 +12,12 @@ import java.nio.charset.StandardCharsets;
  * windows查看IP地址:
  * WIN+R后在输入框输入CMD
  * 弹出的命令行窗口输入:ipconfig查看
- *
+ * <p>
  * MAC查看IP地址:
  * 五个手指在触摸板上向中间聚拢,选择"终端"并打开.
  * 弹出的命令行窗口输入:/sbin/ifconfig查看
- *
- *
+ * <p>
+ * <p>
  * 聊天室服务端
  */
 public class Server {
@@ -28,7 +28,8 @@ public class Server {
      * 2:监听端口,等待客户端连接.
      */
     private ServerSocket serverSocket;
-    public Server(){
+
+    public Server() {
         try {
             /*
                 创建ServeSocket时要指定服务端口,该端口不能与服务端所在
@@ -45,29 +46,36 @@ public class Server {
             e.printStackTrace();
         }
     }
-    public void start(){
+
+    public void start() {
         try {
-            System.out.println("等待客户端连接...");
-            Socket socket = serverSocket.accept();
-            System.out.println("一个客户端连接了!");
+            while (true) {
+                System.out.println("等待客户端连接...");
+                /*
+                ServerSocket的accept方法用于等待客户端的连接.
+                该方法是一个阻塞方法,直到一个客户端建立连接,此时该方法会立即
+                返回一个Socket实例,使用该Socket实例即可与对方交互.
+             */
+                Socket socket = serverSocket.accept();
+                System.out.println("一个客户端连接了!");
+                //通过socket获取输入流读取来自远端计算机发送过来的数据
+                InputStream in = socket.getInputStream();
+                InputStreamReader isr
+                        = new InputStreamReader(in, StandardCharsets.UTF_8);
+                BufferedReader br = new BufferedReader(isr);
 
-            //通过socket获取输入流读取来自远端计算机发送过来的数据
-            InputStream in = socket.getInputStream();
-            InputStreamReader isr
-                    = new InputStreamReader(in, StandardCharsets.UTF_8);
-            BufferedReader br = new BufferedReader(isr);
-
-            //读取一行来自远端计算机发送过来的字符串
-            String message;
-            while((message = br.readLine())!=null) {
-                System.out.println("客户端说:" + message);
+                //读取一行来自远端计算机发送过来的字符串
+                String message;
+                while ((message = br.readLine()) != null) {
+                    System.out.println("客户端说:" + message);
+                }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+
     public static void main(String[] args) {
         Server server = new Server();
         server.start();
