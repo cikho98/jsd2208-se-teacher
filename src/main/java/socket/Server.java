@@ -58,17 +58,10 @@ public class Server {
              */
                 Socket socket = serverSocket.accept();
                 System.out.println("一个客户端连接了!");
-                //通过socket获取输入流读取来自远端计算机发送过来的数据
-                InputStream in = socket.getInputStream();
-                InputStreamReader isr
-                        = new InputStreamReader(in, StandardCharsets.UTF_8);
-                BufferedReader br = new BufferedReader(isr);
-
-                //读取一行来自远端计算机发送过来的字符串
-                String message;
-                while ((message = br.readLine()) != null) {
-                    System.out.println("客户端说:" + message);
-                }
+                //启动一个线程来处理与该客户端的交互
+                ClientHandler handler = new ClientHandler(socket);
+                Thread t = new Thread(handler);
+                t.start();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,4 +73,32 @@ public class Server {
         Server server = new Server();
         server.start();
     }
+
+    /**
+     * 该线程任务负责与指定的客户端交互
+     */
+    private class ClientHandler implements Runnable{
+        private Socket socket;
+        public ClientHandler(Socket socket){
+            this.socket = socket;
+        }
+
+        public void run(){
+            try {
+                //通过socket获取输入流读取来自远端计算机发送过来的数据
+                InputStream in = socket.getInputStream();
+                InputStreamReader isr
+                        = new InputStreamReader(in, StandardCharsets.UTF_8);
+                BufferedReader br = new BufferedReader(isr);
+                //读取一行来自远端计算机发送过来的字符串
+                String message;
+                while ((message = br.readLine()) != null) {
+                    System.out.println("客户端说:" + message);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
