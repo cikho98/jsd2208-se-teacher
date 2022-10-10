@@ -16,7 +16,7 @@ public class Client {
      */
     private Socket socket;
 
-    public Client(){
+    public Client() {
         /*
             实例化Socket时就是与服务端建立连接的过程,这里需要传入
             两个参数:
@@ -27,14 +27,14 @@ public class Client {
          */
         try {
             System.out.println("正在连接服务端...");
-            socket = new Socket("localhost",8088);
+            socket = new Socket("localhost", 8088);
             System.out.println("与服务端建立连接!");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void start(){
+    public void start() {
         try {
             //低级流,作用:将写出的字节发送给建立连接的远端计算机
             OutputStream out = socket.getOutputStream();
@@ -44,7 +44,7 @@ public class Client {
             //缓冲流(高级流),作用:块写文本数据加速
             BufferedWriter bw = new BufferedWriter(osw);
             //PrintWriter(高级流),作用:1按行写出字符串  2自动行刷新
-            PrintWriter pw = new PrintWriter(bw,true);
+            PrintWriter pw = new PrintWriter(bw, true);
 
             Scanner scanner = new Scanner(System.in);
             while(true) {

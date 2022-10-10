@@ -41,7 +41,7 @@ public class DaemonThreadDemo {
         };
         rose.start();
         //设置守护线程必须在线程启动前进行
-        jack.setDaemon(true);
+//        jack.setDaemon(true);
         jack.start();
 
         //主线程也是用户线程,如果主线程不结束,进程就不会结束(因为还有用户线程活着)
